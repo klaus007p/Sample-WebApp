@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Haldiram's Site Tests</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      .test-shell { width: min(100% - 32px, 900px); margin: 2rem auto; }
+      .test-list { display: grid; gap: 0.75rem; margin: 1rem 0; padding: 0; list-style: none; }
+      .test-list li { border: 1px solid var(--line); border-radius: 12px; padding: 0.8rem; background: var(--paper); }
+      .pass { color: #137333; font-weight: 800; }
+      .fail { color: #b42318; font-weight: 800; }
+      .hidden-fixtures { display: none; }
+    </style>
+  </head>
+  <body>
+    <main class="test-shell">
+      <h1>Core Logic Tests</h1>
+      <p>Open this file in a browser. Results are also reported in the console.</p>
+      <button class="button button--primary" type="button" data-run-tests>Run tests</button>
+      <ul class="test-list" data-test-results></ul>
+    </main>
+
+    <div class="hidden-fixtures" aria-hidden="true">
+      <div data-product-grid></div>
+      <div data-category-filters></div>
+      <input data-search-input>
+      <select data-sort-select><option value="popular">Popularity</option></select>
+      <p data-result-count></p>
+      <div data-empty-state hidden></div>
+      <button data-clear-filters></button>
+      <button data-cart-open></button>
+      <span data-cart-count></span>
+      <aside data-cart-drawer hidden>
+        <button data-cart-close></button>
+        <section class="cart-drawer__panel" tabindex="-1">
+          <div data-cart-notice hidden></div>
+          <div data-cart-items></div>
+          <div data-cart-empty></div>
+          <form data-checkout-form>
+            <strong data-cart-total></strong>
+            <input name="name">
+            <small data-error-for="name"></small>
+            <input name="phone">
+            <small data-error-for="phone"></small>
+            <input type="radio" name="fulfillment" value="Pickup" checked>
+            <input type="radio" name="fulfillment" value="Delivery">
+            <label data-address-field hidden><textarea name="address"></textarea></label>
+            <small data-error-for="address"></small>
+            <textarea name="note"></textarea>
+            <small data-error-for="note"></small>
+            <button data-checkout-button></button>
+          </form>
+        </section>
+      </aside>
+      <div data-product-modal hidden>
+        <button data-modal-close></button>
+        <article class="product-modal__panel" tabindex="-1"><div data-modal-content></div></article>
+      </div>
+      <div data-mobile-menu hidden>
+        <div class="mobile-menu__panel" tabindex="-1"></div>
+      </div>
+      <button data-menu-open aria-expanded="false"></button>
+      <button data-menu-close></button>
+      <button data-floating-whatsapp></button>
+      <span data-year></span>
+      <span data-open-status></span>
+      <a data-whatsapp-link></a>
+      <a data-phone-link></a>
+      <span data-address></span>
+      <span data-hours></span>
+      <a data-map-link></a>
+      <a data-instagram-link></a>
+      <div data-toast></div>
+      <div data-announcer></div>
+    </div>
+
+    <template id="product-card-template">
+      <article class="product-card">
+        <button class="product-card__media" type="button" data-open-product>
+          <img alt="" loading="lazy" width="480" height="360">
+          <span class="product-card__placeholder"></span>
+        </button>
+        <div class="product-card__body">
+          <div class="product-card__badges"></div>
+          <button class="product-card__title" type="button" data-open-product></button>
+          <p class="product-card__hindi"></p>
+          <p class="product-card__description"></p>
+          <div class="product-card__meta">
+            <strong class="product-card__price"></strong>
+            <span class="product-card__category"></span>
+          </div>
+          <label class="weight-select">
+            <span>Weight</span>
+            <select data-weight-select>
+              <option value="250">250g</option>
+              <option value="500">500g</option>
+              <option value="1000">1kg</option>
+            </select>
+          </label>
+          <div class="product-card__buy">
+            <span data-live-price></span>
+            <button class="button button--small" type="button" data-add-to-cart>Add to Box</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/tests.js"></script>
+  </body>
+</html>
